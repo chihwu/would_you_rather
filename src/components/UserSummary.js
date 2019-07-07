@@ -5,10 +5,6 @@ class UserSummary extends Component {
 	render() {
 		const { user } = this.props
 
-		console.log("########");
-		console.log(user.answers);
-		console.log("########");
-
 		const answeredCount = Object.keys(user.answers).length 
 		const QuestionsCreatedCount = user.questions.length
 		const totalScore = answeredCount + QuestionsCreatedCount

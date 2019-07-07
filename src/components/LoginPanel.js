@@ -13,7 +13,6 @@ class LoginPanel extends Component {
 
 		const { userID } = this.state;
 		const { dispatch, history } = this.props;
-		console.log(userID);
 		dispatch(setAuthedUser(userID))
 
 		this.setState(() => ({

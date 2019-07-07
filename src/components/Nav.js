@@ -11,6 +11,8 @@ class Nav extends Component {
 	}
 
 	render() {
+		const { currentUserName } = this.props
+
 		return (
 			<nav className="navbar navbar-default">
 			  <div className="container-fluid">
@@ -44,7 +46,7 @@ class Nav extends Component {
 			      </ul>
 			      <ul className="nav navbar-nav navbar-right">
 			        <li style={{
-    padding: '15px 15px', color: '#777'}}>Hello, { this.props.currentUserName }</li>
+    padding: '15px 15px', color: '#777'}}>{ currentUserName && 'Hello,' }{ currentUserName }</li>
 			        <li style={{
    padding: '15px 15px', color: '#777', cursor: 'pointer'}} onClick={ this.onLogout }>Logout</li>
 			      </ul>

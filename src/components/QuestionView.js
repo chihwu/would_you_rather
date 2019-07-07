@@ -8,10 +8,6 @@ class QuestionView extends Component {
 		const respondents = question.optionOne.votes.concat(question.optionTwo.votes)
 		const isAnsweredByCurrentUser = respondents.includes(authedUser)
 
-		console.log("========");
-		console.log(question);
-		console.log("========");
-
 		let displayed = true
 		if (currentSelectionMode === 'unanswered' && isAnsweredByCurrentUser) {
 			displayed = false

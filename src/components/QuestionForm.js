@@ -1,24 +1,65 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { handleAddQuestion } from '../actions/questions'
+import { handleAddUserNewQuestion } from '../actions/users'
 
 class QuestionForm extends Component {
+
+	state = {
+		optionOne: null,
+		optionTwo: null
+	}
+
+	handleSubmit(e) {
+		e.preventDefault()
+
+		const { authedUser, dispatch } = this.props
+		const { optionOne, optionTwo } = this.state
+		const optionOneText = optionOne
+		const optionTwoText = optionTwo
+		const author = authedUser
+		dispatch(handleAddQuestion({ optionOneText, optionTwoText, author }))
+		dispatch(handleAddUserNewQuestion({ optionOneText, optionTwoText, author }))
+	}
+
+	handleChange(e, option) {
+		const optionText = e.target.value
+
+		switch (option) {
+			case 'optionOne':
+				this.setState({
+					optionOne: optionText
+				})
+
+				break
+			case 'optionTwo':
+				this.setState({
+					optionTwo: optionText
+				})
+
+				break
+			default: 
+				return null
+		}
+	}
+
 	render() {
 		return (
 			<div className="panel panel-default">
 			  <div className="panel-heading">Create New Question</div>
 			  <div className="panel-body">
 			  	<div style={{ textAlign: 'left' }}>
-			  		<form>
+			  		<form onSubmit={ (e)=>{ this.handleSubmit(e) } } >
 				  		<h5>Complete the question</h5>
 				  		<br />
 					    <h4><b>Would you rather...</b></h4>
-					    <input type="text" className="form-control" placeholder="Enter Option One Text Here" />
+					    <input type="text" className="form-control" placeholder="Enter Option One Text Here" onChange={ (e) => { this.handleChange(e, 'optionOne') } } required />
 					    <h5>- OR -</h5>
-					    <input type="text" className="form-control" placeholder="Enter Option Two Text Here" />
+					    <input type="text" className="form-control" placeholder="Enter Option Two Text Here" onChange={ (e) => { this.handleChange(e, 'optionTwo') } } required />
 
 					    <br />
 
-					    <button type="button" className="btn btn-success">
+					    <button type="submit" className="btn btn-success">
 					    	Submit
 					    </button>
 					</form>
@@ -29,4 +70,12 @@ class QuestionForm extends Component {
 	}
 }
 
-export default QuestionForm
+function mapStateToProps({ authedUser }) {
+	return {
+		authedUser
+	}
+}
+
+export default connect(mapStateToProps)(QuestionForm)
+
+

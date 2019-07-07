@@ -7,10 +7,6 @@ export function handleInitialData() {
 	return (dispatch) => {
 		dispatch(showLoading());
 		return getInitialData().then(({ users, questions }) => {
-			console.log("---------------");
-			console.log(users);
-			console.log(questions);
-			console.log("---------------");
 			dispatch(receiveUsers(users))
 			dispatch(receiveQuestions(questions))
 			dispatch(hideLoading)
