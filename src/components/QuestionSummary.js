@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 class QuestionSummary extends Component {
 
 	render() {
-		const { question, authedUser } = this.props
+		const { question, authedUser, users } = this.props
 
 		const optionOneCount = question.optionOne.votes.length
 		const optionTwoCount = question.optionTwo.votes.length
@@ -16,11 +16,16 @@ class QuestionSummary extends Component {
 		const isOptionOneMyChoice = question.optionOne.votes.includes(authedUser) ? true : false
 		const isOptionTwoMyChoice = question.optionTwo.votes.includes(authedUser) ? true : false
 
+		const author = users[question.author]
+
 		return (
 			<div className="panel panel-default">
-			  <div className="panel-heading">Asked by { question.author }</div>
+			  <div className="panel-heading">Asked by { author.name }</div>
 			  <div className="panel-body">
-			  	<div style={{ textAlign: 'left' }}>
+			  	<div className="col-md-4">
+			  		<img src={ author.avatarURL } style={{ width: '100%' }} alt={ author.name } />
+			  	</div>
+			  	<div className="col-md-8" style={{ textAlign: 'left' }}>
 				    <h4>Results: </h4>
 				    <div>
 				    	<div className="well">
@@ -68,4 +73,11 @@ class QuestionSummary extends Component {
 
 }
 
-export default QuestionSummary
+function mapStateToProps({ users }) {
+	return {
+		users
+	}
+}
+
+export default connect(mapStateToProps)(QuestionSummary)
+

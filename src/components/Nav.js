@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 import { connect } from 'react-redux'
 
@@ -23,7 +23,7 @@ class Nav extends Component {
 			        <span className="icon-bar"></span>
 			        <span className="icon-bar"></span>
 			      </button>
-			      <a className="navbar-brand" href="#">Would You Rather</a>
+			      <Link className="navbar-brand" to="/">Would You Rather</Link>
 			    </div>
 
 			    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

@@ -29,13 +29,17 @@ class AnswerableQuestion extends Component {
 	}
 
 	render() {
-		const { question, authedUser } = this.props
+		const { question, users } = this.props
+		const author = users[question.author]
 
 		return (
 			<div className="panel panel-default">
-			  <div className="panel-heading">{ question.author } asks:</div>
+			  <div className="panel-heading">{ author.name } asks:</div>
 			  <div className="panel-body">
-			  	<div style={{ textAlign: 'left' }}>
+			  	<div className="col-md-4">
+			  		<img src={ author.avatarURL } style={{ width: '100%' }} alt={ author.name } />
+			  	</div>
+			  	<div className="col-md-8" style={{ textAlign: 'left' }}>
 				    <h4>Would you rather...</h4>
 				    <form onSubmit={ (e) => { this.handleSubmit(e) } }>
 				    	<div className="radio">
@@ -63,6 +67,12 @@ class AnswerableQuestion extends Component {
 
 }
 
-export default withRouter(connect()(AnswerableQuestion))
+function mapStateToProps({ users }) {
+	return {
+		users
+	}
+}
+
+export default withRouter(connect(mapStateToProps)(AnswerableQuestion))
 
 

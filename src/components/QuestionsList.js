@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import QuestionView from './QuestionView'
 import { setSelectedViewMode } from '../actions/selectedViewMode'
+import { Link } from 'react-router-dom'
 
 class QuestionsList extends Component {
 
@@ -29,8 +30,8 @@ class QuestionsList extends Component {
 		return (
 			<div>
 				<ul className="nav nav-tabs" style={{ width: '100%' }}>
-				  <li className={ this.state.currentSelectionMode === 'unanswered' ? 'active' : '' } style={{ width: '50%', cursor: 'pointer' }} onClick={() => { this.hanldeSelection('unanswered') } }><a href="#">Unanswered</a></li>
-				  <li className={ this.state.currentSelectionMode === 'answered' ? 'active' : '' } style={{ width: '50%', cursor: 'pointer' }} onClick={() => { this.hanldeSelection('answered') } }><a href="#">Answered</a></li>
+				  <li className={ this.state.currentSelectionMode === 'unanswered' ? 'active' : '' } style={{ width: '50%', cursor: 'pointer' }} onClick={() => { this.hanldeSelection('unanswered') } }><Link to="#">Unanswered</Link></li>
+				  <li className={ this.state.currentSelectionMode === 'answered' ? 'active' : '' } style={{ width: '50%', cursor: 'pointer' }} onClick={() => { this.hanldeSelection('answered') } }><Link to="#">Answered</Link></li>
 				</ul>
 				<div>
 					{

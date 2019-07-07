@@ -12,6 +12,9 @@ class UserSummary extends Component {
 		return (
 			<div className="row panel panel-default">
 				<br />
+				<div className="col-md-2">
+		  			<img src={ user.avatarURL } style={{ width: '100%' }} alt={ user.name } />
+		  		</div>
 				<div className="col-md-8">
 					<div className="panel panel-default">
 					  <div className="panel-heading">{ user.name }</div>
@@ -35,7 +38,7 @@ class UserSummary extends Component {
 					  </div>
 					</div>
 				</div>
-				<div className="col-md-4">
+				<div className="col-md-2">
 					<div className="panel panel-default">
 					  <div className="panel-heading">Score</div>
 					  <div className="panel-body">

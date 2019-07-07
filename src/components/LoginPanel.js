@@ -31,8 +31,6 @@ class LoginPanel extends Component {
 	}
 
 	render() {
-		let { userID } = this.state;
-
 		return (
 			<form onSubmit={ this.handleSubmit }>
 			  <fieldset>

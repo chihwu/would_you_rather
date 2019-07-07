@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
 import { handleAddUserNewQuestion } from '../actions/users'
+import { withRouter } from 'react-router-dom'
 
 class QuestionForm extends Component {
 
@@ -13,13 +14,15 @@ class QuestionForm extends Component {
 	handleSubmit(e) {
 		e.preventDefault()
 
-		const { authedUser, dispatch } = this.props
+		const { authedUser, dispatch, history } = this.props
 		const { optionOne, optionTwo } = this.state
 		const optionOneText = optionOne
 		const optionTwoText = optionTwo
 		const author = authedUser
 		dispatch(handleAddQuestion({ optionOneText, optionTwoText, author }))
 		dispatch(handleAddUserNewQuestion({ optionOneText, optionTwoText, author }))
+
+		history.push('/')
 	}
 
 	handleChange(e, option) {
@@ -76,6 +79,6 @@ function mapStateToProps({ authedUser }) {
 	}
 }
 
-export default connect(mapStateToProps)(QuestionForm)
+export default withRouter(connect(mapStateToProps)(QuestionForm))
 
 

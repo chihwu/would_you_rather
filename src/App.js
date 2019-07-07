@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import logo from './logo.svg';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from './actions/shared'
@@ -26,7 +25,7 @@ class App extends Component {
           <div className="App">
             <Nav />
             <div className="container">
-              <div style={{ width: '40%', minWidth: '400px', margin: '0 auto' }}>
+              <div style={{ width: '60%', minWidth: '400px', margin: '0 auto' }}>
                 {
                   this.props.logged_in === true
                   ? <LoginPanel />
