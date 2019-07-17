@@ -27,7 +27,6 @@ class AnswerableQuestion extends Component {
 		dispatch(handleSaveRespondentInfo({ authedUser, qid, answer }))
 		
 		dispatch(setSelectedViewMode('answered'))
-		history.push('/')
 	}
 
 	render() {
