@@ -1,25 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 
 class LoginPanel extends Component {
 	state = {
-		userID: null
+		userID: null,
+		loggedIn: false
 	}
 
 	handleSubmit = (e) => {
 		e.preventDefault();
 
 		const { userID } = this.state;
-		const { dispatch, history } = this.props;
+		const { dispatch } = this.props;
 		dispatch(setAuthedUser(userID))
 
 		this.setState(() => ({
-			userID: ''
+			userID: '',
+			loggedIn: true
 		}));
-
-		history.push('/')
 	}
 
 	handleChange = (e) => {
@@ -31,7 +31,11 @@ class LoginPanel extends Component {
 	}
 
 	render() {
+		const intendedDestination = this.props.location.pathname;
+		
 		return (
+			this.state.loggedIn ?
+			<Redirect to={ intendedDestination } /> :
 			<form onSubmit={ this.handleSubmit }>
 			  <fieldset>
 			    <div className="form-group">

@@ -1,4 +1,5 @@
 export const SET_AUTHED_USER = 'SET_AUTHED_USER'
+export const RETRIEVE_AUTHED_USER = 'RETRIEVE_AUTHED_USER'
 
 export function setAuthedUser(id) {
 	return {

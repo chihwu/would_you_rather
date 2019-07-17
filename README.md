@@ -1,5 +1,7 @@
-To Start the project,
+About the project:
+This application is intended to create a game for users to create a question list with two alternative options for each question for survey takers to answer. In the application, each user not only can create a new question and answer other users' questions, but also check out which user answers the most questions or created most questions.
 
+To Start the project,
 1. In the project folder, please run: npm install
 2. please run: npm start
 

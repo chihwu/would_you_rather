@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
 import { handleAddUserNewQuestion } from '../actions/users'
+import { setSelectedViewMode } from '../actions/selectedViewMode'
 import { withRouter } from 'react-router-dom'
 
 class QuestionForm extends Component {
@@ -22,6 +23,7 @@ class QuestionForm extends Component {
 		dispatch(handleAddQuestion({ optionOneText, optionTwoText, author }))
 		dispatch(handleAddUserNewQuestion({ optionOneText, optionTwoText, author }))
 
+		dispatch(setSelectedViewMode('unanswered'))
 		history.push('/')
 	}
 

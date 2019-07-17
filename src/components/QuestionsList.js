@@ -11,7 +11,7 @@ class QuestionsList extends Component {
 	}
 
 	componentDidMount() {
-		this.hanldeSelection('unanswered')
+		this.props.selectedViewMode === null ? this.hanldeSelection('unanswered') : this.hanldeSelection(this.props.selectedViewMode)
 	}
 
 	hanldeSelection = (selection) => {
@@ -45,11 +45,13 @@ class QuestionsList extends Component {
 	}
 }
 
-function mapStateToProps({ questions, authedUser }) {
+function mapStateToProps({ questions, authedUser, selectedViewMode }) {
+
 	return {
 		questionsID: Object.keys(questions)
 						.sort((a,b) => questions[b].timestamp - questions[a].timestamp),
-		authedUser
+		authedUser,
+		selectedViewMode
 	}
 }
 

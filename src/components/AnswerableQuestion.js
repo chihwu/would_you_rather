@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAnswerQuestion } from '../actions/questions'
 import { handleSaveRespondentInfo } from '../actions/users'
-import { withRouter } from 'react-router-dom'
+import { setSelectedViewMode } from '../actions/selectedViewMode'
+import { withRouter, Redirect } from 'react-router-dom'
 
 class AnswerableQuestion extends Component {
 
@@ -25,14 +26,17 @@ class AnswerableQuestion extends Component {
 		dispatch(handleAnswerQuestion({ authedUser, qid, answer }))
 		dispatch(handleSaveRespondentInfo({ authedUser, qid, answer }))
 		
+		dispatch(setSelectedViewMode('answered'))
 		history.push('/')
 	}
 
 	render() {
 		const { question, users } = this.props
-		const author = users[question.author]
+		const author = question !== undefined ? users[question.author] : null
 
 		return (
+			author === null ?
+			<Redirect to='/404' /> :
 			<div className="panel panel-default">
 			  <div className="panel-heading">{ author.name } asks:</div>
 			  <div className="panel-body">

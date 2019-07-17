@@ -28,7 +28,7 @@ class Nav extends Component {
 
 			    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul className="nav navbar-nav">
-			        <li className="active">
+			        <li>
 			        	<NavLink to="/" exact activeClassName="active">
 			        		Home <span className="sr-only">(current)</span>
 			        	</NavLink>
