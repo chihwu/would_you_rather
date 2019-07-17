@@ -60,15 +60,9 @@ class Nav extends Component {
 
 function mapStateToProps({ users, authedUser }) {
 
-	let currentUser = null;
-
-	for (var key in users) {
-		if (users[key].id === authedUser) {
-			currentUser = users[key];
-		}
-	}
+	const currentUser = Object.values(users).find(({ id }) => id === authedUser)
 		
-	let currentUserName = currentUser !== null && currentUser.name
+	let currentUserName = currentUser !== undefined && currentUser.name
 
 	return {
 		currentUserName

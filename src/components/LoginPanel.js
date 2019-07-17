@@ -57,10 +57,10 @@ class LoginPanel extends Component {
 
 function mapStateToProps({ users }) {
 
-	let usersList = [];
-	for (var key in users) {
-		usersList.push({id: users[key].id, name: users[key].name});
-	}
+	const usersList = Object.values(users).map(({ id, name }) => ({
+		id,
+		name
+	}))
 
 	return {
 		users: usersList

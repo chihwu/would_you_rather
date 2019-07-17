@@ -28,21 +28,10 @@ class QuestionForm extends Component {
 	handleChange(e, option) {
 		const optionText = e.target.value
 
-		switch (option) {
-			case 'optionOne':
-				this.setState({
-					optionOne: optionText
-				})
-
-				break
-			case 'optionTwo':
-				this.setState({
-					optionTwo: optionText
-				})
-
-				break
-			default: 
-				return null
+		if (option === 'optionOne' || option === 'optionTwo') {
+			this.setState({
+				[option]: optionText
+			})
 		}
 	}
 
